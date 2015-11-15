@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest"
+         xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest"
+         xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest"
+         xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
+
+  <Identity Name="50560e40-9568-44f6-ae05-a1aeab0caf1c"
+            Publisher="CN=andre"
+            Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="f7a58783-3330-4090-9097-ce6e51b9e0b8"
+                    PhonePublisherId="63497ba8-53e5-4b62-b064-40e12f2bf394"/>
+
+  <Properties>
+    <DisplayName>Ev3_WinPhone8_1</DisplayName>
+    <PublisherDisplayName>andre</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Prerequisites>
+    <OSMinVersion>6.3.1</OSMinVersion>
+    <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
+  </Prerequisites>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+                 Executable="AGHost.exe"
+                 EntryPoint="MainPage.xaml">
+      <m3:VisualElements
+          DisplayName="Ev3_WinPhone8_1"
+          Square150x150Logo="Assets\SquareTile150x150.png"
+          Square44x44Logo="Assets\Logo.png"
+          Description="Ev3_WinPhone8_1"
+          ForegroundText="light"
+          BackgroundColor="#464646">
+        <m3:DefaultTile Square71x71Logo="Assets\SquareTile71x71.png"/>
+        <m3:SplashScreen Image="Assets\SplashScreen.png" />
+      </m3:VisualElements>
+
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" EntryPoint="AgHost.BackgroundTask">
+          <BackgroundTasks>
+          <Task Type="systemEvent" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
+
+    </Application>
+  </Applications>
+  <Capabilities>
+  <m2:DeviceCapability Name="bluetooth.rfcomm">
+    <m2:Device Id="any">
+        <m2:Function Type="name:serialPort" />
+    </m2:Device>
+</m2:DeviceCapability>
+  </Capabilities>
+
+  <Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>AgHostSvcs.dll</Path>
+        <ActivatableClass ActivatableClassId="AgHost.BackgroundTask" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+  </Extensions>
+
+</Package>
