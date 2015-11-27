@@ -47,8 +47,6 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Button x:Name="button_connect" Content="Connect" Margin="10,10,0,0" VerticalAlignment="Top" ClickMode="Press" Click="button_connect_Click" HorizontalAlignment="Left" Width="164"/>
-            <Button x:Name="button_disconnect" Content="Disconnect" Margin="10,82,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="164" Click="button_disconnect_Click"/>
             <Button x:Name="button_go" Content="Go" Margin="168,159,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" Click="button_go_Click"/>
             <Button x:Name="button_left" Content="Left" HorizontalAlignment="Left" Margin="78,231,0,0" VerticalAlignment="Top" Click="button_left_Click"/>
             <Button x:Name="button_right" Content="Right" HorizontalAlignment="Left" Margin="288,231,0,0" VerticalAlignment="Top" Click="button_right_Click"/>

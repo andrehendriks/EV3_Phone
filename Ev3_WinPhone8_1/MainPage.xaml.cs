@@ -20,50 +20,48 @@ namespace Ev3_WinPhone8_1
         public MainPage()
         {
             InitializeComponent();
-            brick.Ports[InputPort.Four].PercentValue = 50;
+            
             brick.Ports[InputPort.Four].SetMode(InfraredMode.Proximity);
-             
+            brick.Ports[InputPort.Four].PercentValue = 50;
+            if (true)
+            {
+                brick.BatchCommand.TurnMotorAtSpeed(OutputPort.B, 0);
+                brick.BatchCommand.TurnMotorAtSpeed(OutputPort.C, 0);
+                brick.BatchCommand.SendCommandAsync();
+            } 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
 
         
 
-        private void button_connect_Click(object sender, RoutedEventArgs e)
-        {
-            brick.ConnectAsync();
-        }
-
-        private void button_disconnect_Click(object sender, RoutedEventArgs e)
-        {
-            brick.Disconnect();
-        }
+        
 
         private async void button_go_Click(object sender, RoutedEventArgs e)
         {
-            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.B, 35, 3000, false);
-            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.C, 35, 3000, false);
+            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.B, 35, 500, false);
+            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.C, 35, 500, false);
             await brick.BatchCommand.SendCommandAsync();
         }
 
         private async void button_left_Click(object sender, RoutedEventArgs e)
         {
-            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.B, -35, 1300, false);
-            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.C, 35, 1300, false);
+            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.B, -35, 300, false);
+            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.C, 35, 300, false);
             await brick.BatchCommand.SendCommandAsync();
         }
 
         private async void button_right_Click(object sender, RoutedEventArgs e)
         {
-            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.B, 35, 1300, false);
-            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.C, -35, 1300, false);
+            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.B, 35, 300, false);
+            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.C, -35, 300, false);
             await brick.BatchCommand.SendCommandAsync();
         }
 
         private async void button_back_Click(object sender, RoutedEventArgs e)
         {
-            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.B, -35, 3000, false);
-            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.C, -35, 3000, false);
+            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.B, -35, 500, false);
+            brick.BatchCommand.TurnMotorAtSpeedForTime(OutputPort.C, -35, 500, false);
             await brick.BatchCommand.SendCommandAsync();
         }
 

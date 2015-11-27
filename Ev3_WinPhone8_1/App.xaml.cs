@@ -7,6 +7,8 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Ev3_WinPhone8_1.Resources;
+using Lego.Ev3.Core;
+using Lego.Ev3.Phone;
 
 namespace Ev3_WinPhone8_1
 {
@@ -17,6 +19,12 @@ namespace Ev3_WinPhone8_1
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
+
+        /// <summary>
+        /// Declaring Brick
+        /// </summary>
+        ///
+        Brick brick = new Brick(new BluetoothCommunication());
 
         /// <summary>
         /// Constructor for the Application object.
@@ -73,12 +81,14 @@ namespace Ev3_WinPhone8_1
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            brick.ConnectAsync();
         }
 
         // Code to execute when the application is deactivated (sent to background)
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
+            brick.Disconnect();
         }
 
         // Code to execute when the application is closing (eg, user hit Back)
